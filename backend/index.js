@@ -23,9 +23,6 @@ mongoose.connection.on('disconnected', () =>{
     console.log(`disconnected`);
 });
 
-mongoose.connection.on('connected', () =>{
-    console.log(`connected`);
-});
 
 
 
