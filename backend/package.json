@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "yarn start",
-    "start": "node index.js"
+    "start": "nodemon index.js"
+    
   },
   "keywords": [],
   "author": "",
