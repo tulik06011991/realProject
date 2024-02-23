@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGO_URL)
 .then(() =>{
     console.log(`mongodb atlas connected`)
 }).catch((error) =>{
-    console.log(`mongodb atlas not connected`)
+    console.log( error, `mongodb atlas not connected`)
 })
 
 mongoose.connection.on('disconnected', () =>{
