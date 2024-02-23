@@ -2,6 +2,15 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
+const cors = require('cors')
+
+
+
+app.use(cors())
+app.use(express.json())
+
+
+
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() =>{
@@ -17,6 +26,10 @@ mongoose.connection.on('disconnected', () =>{
 mongoose.connection.on('connected', () =>{
     console.log(`connected`);
 });
+
+
+
+
 
 const PORT = process.env.PORT || 8800;
 
