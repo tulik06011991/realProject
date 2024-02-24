@@ -18,12 +18,22 @@ router.post("/" , async (req, res) =>{
     }
 })
 
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
+router.put("/" , async(req, res) =>{
+    try {
+        
+    } catch (error) {
+        console.log(error),
+        res.status(500).json({msg: error})
+    }
 })
 
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
+router.delete("/" , (req, res) =>{
+    try {
+        
+    } catch (error) { console.log(error),
+        res.status(500).json({msg: error})
+        
+    }
 })
 
 
