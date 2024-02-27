@@ -53,9 +53,9 @@ const LoginUser = async (req, res) => {
         }
        
 
-        const payload = ({id:newUser._id, username: newUser.username})
+        const payload = ({id:newUser._id, isAdmin: newUser.isAdmin})
 
-        const token = jwt.sign(payload, process.env.JWT )
+        const token = jwt.sign(payload)
 
         const {password, isAdmin, ...others} = newUser._doc
         
