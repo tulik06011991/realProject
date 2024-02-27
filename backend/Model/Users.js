@@ -30,5 +30,5 @@ const userSchema = new mongoose.Schema({
    
 }) 
 
- const hotelModel =  mongoose.model('Hotel', userSchema)
+ const hotelModel =  mongoose.model('User', userSchema)
  module.exports = hotelModel
