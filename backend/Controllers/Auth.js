@@ -5,13 +5,18 @@ const jwt = require('jsonwebtoken')
 // Foydalanuvchi ro'yxatdan o'tkazish
 const registerUser = async (req, res) => {
     try {
-        // Foydalanuvchi ma'lumotlarini olamiz
-        const { username, email, password } = req.body;
+        const isEmpty = await Object.values(req.body).some((item) =>item ===!item)
+        if(isExsist) {
+            res.status(400).json(`siz hamma bo'sh joylarni to'ldirmadingiz`);
 
-        // Foydalanuvchi ro'yxatdan o'tkaziladi
-        const newUser = await AuthModel.create({ username, email, password });
+        }
+        const isUser = await AuthModel.findOne({username: req.body.username}) 
+        if(isUser) {
+            res.status(401).json(` Bu foydalanuvchi ro'yxatdan o'tgan `)
 
-        res.status(201).json(newUser);
+        }
+        const hashPassword = await bcrypt.hash(req.body.password, 10)
+        const newUser = await AuthModel.create({...req.body, password: hashPassword})
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
