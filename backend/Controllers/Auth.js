@@ -1,29 +1,6 @@
-<<<<<<< HEAD
-const register = async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-
-}
-
-
-const login = async(req, res) =>{
-    try {
-        
-    } catch (error) {
-        
-    }
-    
-}
-
-module.exports = {
-    register,
-    login
-}
-=======
 const AuthModel = require('../Model/Auth');
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 // Foydalanuvchi ro'yxatdan o'tkazish
 const registerUser = async (req, res) => {
@@ -59,5 +36,4 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
->>>>>>> 22e7df7a7808cc9f088f1dd17b1d7ee39092fa51
+module.exports = { registerUser, loginUser }
