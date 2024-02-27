@@ -20,36 +20,49 @@ const registerUser = async (req, res) => {
         const hashPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
 
-        const token = jwt.sign({id:newUser._id, username: newUser.username})
+        const payload = ({id:newUser._id, username: newUser.username})
 
-        const {}
+        const token = jwt.sign(payload, process.env.JWT )
+
+        const {password, ...others} = newUser._doc
         
-        res.status(201).json(newUser); // Foydalanuvchi muvaffaqiyatli qo'shildi
+        res.status(201).json(token, others); // Foydalanuvchi muvaffaqiyatli qo'shildi
 
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = registerUser;
 
-// Foydalanuvchi kiritish
-const loginUser = async (req, res) => {
+const LoginUser = async (req, res) => {
     try {
-        // Foydalanuvchi ma'lumotlarini olamiz
-        const { username, password } = req.body;
-
-        // Foydalanuvchi tekshiriladi
-        const user = await AuthModel.findOne({ username });
-
-        if (!user || user.password !== password) {
-            return res.status(401).json({ message: `'Noto'g'ri foydalanuvchi nomi yoki parol'!'` });
+        const isEmpty = await Object.values(req.body).some((item) => item === !item);
+        if (isEmpty) {
+            return res.status(400).json(`siz hamma bo'sh joylarni to'ldirmadingiz`);
+        }
+        
+        const isUser = await AuthModel.findOne({ username: req.body.username });
+        if (isUser) {
+            return res.status(401).json(`Bu foydalanuvchi ro'yxatdan o'tgan`);
         }
 
-        res.status(200).json({ message: 'Foydalanuvchi kirish muvaffaqiyatli!' });
+        const hashPassword = await bcrypt.hash(req.body.password, 10);
+        const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
+
+        const payload = ({id:newUser._id, username: newUser.username})
+
+        const token = jwt.sign(payload, process.env.JWT )
+
+        const {password, ...others} = newUser._doc
+        
+        res.status(201).json(token, others); // Foydalanuvchi muvaffaqiyatli qo'shildi
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+// Foydalanuvchi kiritish
 
 module.exports = { registerUser, loginUser }
