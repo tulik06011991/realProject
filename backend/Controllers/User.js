@@ -1,17 +1,17 @@
 const UserData= require("../Model/Hotel")
 
-const createUser = async(req,res) =>{
-    const Userdata= new UserData(req.body)
-    try {
-        const SaveUser = await UserData.create(Userdata)
-        res.status(201).json(SaveUser)
+// const createUser = async(req,res) =>{
+//     const Userdata= new UserData(req.body)
+//     try {
+//         const SaveUser = await UserData.create(Userdata)
+//         res.status(201).json(SaveUser)
         
-    } catch (error) {
-        console.log(error),
-        res.status(500).json({msg: error})
+//     } catch (error) {
+//         console.log(error),
+//         res.status(500).json({msg: error})
         
-    }
-}
+//     }
+// }
 
 const  updateUser = async(req,res) =>{
     try {
