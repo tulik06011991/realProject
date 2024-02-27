@@ -46,7 +46,7 @@ const LoginUser = async (req, res) => {
             return res.status(401).json(`login yoki parol xato`);
         }
 
-        const isPassword = bcrypt.compare(req.body.password, user.password)
+        const isPassword = await bcrypt.compare(req.body.password, user.password)
 
         if(!isPassword){
             res.status(401).json(` login yoki parol xato`)
