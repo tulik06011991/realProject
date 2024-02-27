@@ -57,9 +57,9 @@ const LoginUser = async (req, res) => {
 
         const token = jwt.sign(payload, process.env.JWT )
 
-        const {password, ...others} = newUser._doc
+        const {password, isAdmin, ...others} = newUser._doc
         
-        res.status(201).json(token, others); // Foydalanuvchi muvaffaqiyatli qo'shildi
+        res.status(201).json({ others}); // Foydalanuvchi muvaffaqiyatli qo'shildi
 
     } catch (error) {
         res.status(500).json({ message: error.message });
