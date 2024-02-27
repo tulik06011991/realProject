@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
         const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
 
         const payload = { id: newUser._id, username: newUser.username };
-        const token = jwt.sign(payload, process.env.JWT_SECRET);
+        const token = jwt.sign(payload, process.env.JWT);
 
         const { password, ...others } = newUser._doc;
         
