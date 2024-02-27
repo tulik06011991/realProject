@@ -36,18 +36,22 @@ const registerUser = async (req, res) => {
 
 const LoginUser = async (req, res) => {
     try {
-        const isEmpty = await Object.values(req.body).some((item) => item === !item);
+        const isEmpty = await Object.values(req.body).some((item) => item === ' ');
         if (isEmpty) {
             return res.status(400).json(`siz hamma bo'sh joylarni to'ldirmadingiz`);
         }
         
-        const isUser = await AuthModel.findOne({ username: req.body.username });
-        if (isUser) {
-            return res.status(401).json(`Bu foydalanuvchi ro'yxatdan o'tgan`);
+        const user = await AuthModel.findOne({ username: req.body.username });
+        if (!user) {
+            return res.status(401).json(`login yoki parol xato`);
         }
 
-        const hashPassword = await bcrypt.hash(req.body.password, 10);
-        const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
+        const isPassword = bcrypt.compare(req.body.password, user.password)
+
+        if(!isPassword){
+            res.status(401).json(` login yoki parol xato`)
+        }
+       
 
         const payload = ({id:newUser._id, username: newUser.username})
 

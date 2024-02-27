@@ -4,9 +4,9 @@ const register = require('../Controllers/Auth')
 
 
 
-router.post("/" , register )
+router.post("/register" , register )
 
-router.post("/" , login )
+router.post("/login" , login )
 
 
 
