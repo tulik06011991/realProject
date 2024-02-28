@@ -25,7 +25,7 @@ const verifyToken = async(req, res, next)  => {
 
 const verifyUser = async(req, res, next) =>{
     verifyToken(req, res, next, () =>{
-        if(req.user.id === req.params.id ){
+        if(req.user.id === req.params.id || req.user.isAdmin ){
             next()
         }
         else{
