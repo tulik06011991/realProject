@@ -1,18 +1,25 @@
 const express= require('express')
 const router = express.Router()
 
-
-router.post("/" , )
-
-router.get("/" ,)
-
-router.get("/" , )
-
-
-router.put("/" , )
+const { 
+    updateUser,
+    deleteUser,
+    getAllUser,
+    getIdUser
+} = require('../Controllers/User')
 
 
-router.delete("/" , )
+
+
+router.get("/" , getIdUser)
+
+router.get("/" , getAllUser )
+
+
+router.put("/" , updateUser )
+
+
+router.delete("/" ,  deleteUser)
 
 
 
