@@ -1,3 +1,4 @@
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const AuthModel = require('../Model/Auth');
@@ -6,32 +7,28 @@ const registerUser = async (req, res) => {
     try {
         const isEmpty = Object.values(req.body).some(item => !item);
         if (isEmpty) {
-            return res.status(400).json(`Siz hamma bo'sh joylarni to'ldirmadingiz`);
+            return res.status(400).json({ message: "Siz hamma bo'sh joylarni to'ldirmadingiz" });
         }
         
         const isUser = await AuthModel.findOne({ username: req.body.username });
         if (isUser) {
-            return res.status(401).json(`Bu foydalanuvchi ro'yxatdan o'tgan`);
+            return res.status(401).json({ message: "Bu foydalanuvchi avval ro'yxatdan o'tgan" });
         }
 
-        console.log(req.body.password)
-        const salt = await bcrypt.genSalt(10)
-        
-       
-        
-   
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const newUser = await AuthModel.create({ ...req.body, password: salt });
+        const newUser = await AuthModel.create({ ...req.body, password: hashedPassword });
 
         const payload = { id: newUser._id, username: newUser.username };
-        const token = jwt.sign(payload, process.env.JWT);
+        const token = jwt.sign(payload, process.env.JWT_SECRET);
 
         const { password, ...others } = newUser._doc;
         
-        res.status(201).json({ token, ...others }); // Foydalanuvchi muvaffaqiyatli qo'shildi
+        return res.status(201).json({ token, ...others }); // Foydalanuvchi muvaffaqiyatli qo'shildi
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Registration error:', error);
+        return res.status(500).json({ message: "Server xatosi" });
     }
 };
 
@@ -39,30 +36,36 @@ const loginUser = async (req, res) => {
     try {
         const isEmpty = Object.values(req.body).some(item => !item);
         if (isEmpty) {
-            return res.status(400).json(`Siz hamma bo'sh joylarni to'ldirmadingiz`);
+            return res.status(400).json({ message: "Siz hamma bo'sh joylarni to'ldirmadingiz" });
         }
         
         const user = await AuthModel.findOne({ email: req.body.email });
         if (!user) {
-            return res.status(401).json(`Login yoki parol xato`);
+            return res.status(401).json({ message: "Loginiiiiii yoki parol xato" });
         }
 
         const isPassword = await bcrypt.compare(req.body.password, user.password);
 
         if (!isPassword) {
-            return res.status(401).json(`Login yoki parol xato`);
+            return res.status(401).json({ message: "Login yoki parol xato" });
         }
 
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
+        const payload = { id: user._id, username: user.username };
+        const token = jwt.sign(payload, process.env.JWT_SECRET);
 
-        const { password, isAdmin, ...others } = user._doc;
-        
-        res.cookie('access_token', token, {
+        // Set token as a cookie
+        res.cookie('token', token, {
             httpOnly: true,
-        }).status(200).json({ ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
+            // secure: true, // Uncomment this line in production (for HTTPS)
+            // sameSite: 'None', // Uncomment this line in production (for cross-site requests)
+        });
+
+        const { password, ...others } = user._doc;
+        return res.status(200).json({ token, ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Login error:', error);
+        return res.status(500).json({ message: "Server xatosi" });
     }
 };
 
