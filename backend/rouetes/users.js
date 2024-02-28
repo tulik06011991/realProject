@@ -7,7 +7,7 @@ const {
     getAllUser,
     getIdUser
 } = require('../Controllers/User')
-const {verifyToken, verifyUser, verifyAdmin }= require('../VerifyToken/VerifyToken')
+const { verifyAdmin }= require('../VerifyToken/VerifyToken')
 
 
 
@@ -21,11 +21,11 @@ const {verifyToken, verifyUser, verifyAdmin }= require('../VerifyToken/VerifyTok
 
 
 
-router.get('/:id', verifyUser, getIdUser)
+router.get('/:id', verifyAdmin, getIdUser)
 router.get("/",  verifyAdmin,  getAllUser)
-router.put("/:id" , verifyUser, updateUser )
+router.put("/:id" , verifyAdmin, updateUser )
 
-router.delete("/:id" , verifyUser, deleteUser)
+router.delete("/:id" , verifyAdmin, deleteUser)
 
 
 
