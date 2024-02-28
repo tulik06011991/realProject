@@ -22,4 +22,12 @@ const verifyToken = async(req, res, next)  => {
 
 }
 
-module.exports = verifyToken
+
+const verifyUser = async(req, res, next) =>{
+
+}
+
+module.exports = {
+verifyToken,
+verifyUser
+}
