@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
             return res.status(400).json(`Siz hamma bo'sh joylarni to'ldirmadingiz`);
         }
         
-        const user = await AuthModel.findOne({ username: req.body.username });
+        const user = await AuthModel.findOne({ email: req.body.email });
         if (!user) {
             return res.status(401).json(`Login yoki parol xato`);
         }
