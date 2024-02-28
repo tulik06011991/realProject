@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
             return res.status(401).json(`Bu foydalanuvchi ro'yxatdan o'tgan`);
         }
 
-        const hashPassword = await bcrypt.hash(req.body.password, 10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
 
         const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
 
