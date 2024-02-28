@@ -6,12 +6,13 @@ const {createHotel,
     deleteHotel,
     getAllHotel,
     getIdHotel
-} = require('../Controllers/Hotel')
+} = require('../Controllers/Hotel');
+const {verifyToken, verifyUser, verifyAdmin }= require('../VerifyToken/VerifyToken');
 
 
-router.post("/" , createHotel )
+router.post("/" , verifyAdmin, createHotel )
 
-router.put("/:id", updateHotel )
+router.put("/:id", verifyAdmin,  updateHotel )
 
 router.get("/" , getAllHotel)
 
@@ -22,7 +23,7 @@ router.get("/" , getAllHotel)
 router.get("/:id" ,  getIdHotel)
 
 
-router.delete("/:id" ,  deleteHotel)
+router.delete("/:id" , verifyAdmin,  deleteHotel)
 
 
 
