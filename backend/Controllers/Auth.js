@@ -14,9 +14,14 @@ const registerUser = async (req, res) => {
             return res.status(401).json(`Bu foydalanuvchi ro'yxatdan o'tgan`);
         }
 
-        const hashPassword = await bcrypt.hash(req.body.password, salt);
+        console.log(req.body.password)
+        const salt = await bcrypt.genSalt(10)
+        
+       
+        
+   
 
-        const newUser = await AuthModel.create({ ...req.body, password: hashPassword });
+        const newUser = await AuthModel.create({ ...req.body, password: salt });
 
         const payload = { id: newUser._id, username: newUser.username };
         const token = jwt.sign(payload, process.env.JWT);
