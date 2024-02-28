@@ -24,6 +24,14 @@ const verifyToken = async(req, res, next)  => {
 
 
 const verifyUser = async(req, res, next) =>{
+    verifyToken(req, res, next, () =>{
+        if(req.user.id === req.params.id ){
+            next()
+        }
+        else{
+            res.status(403).json({message: `Siz avtorizatsiayadan o'tmagansiz`})
+        }
+    })
 
 }
 

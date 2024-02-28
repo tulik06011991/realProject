@@ -7,7 +7,7 @@ const {
     getAllUser,
     getIdUser
 } = require('../Controllers/User')
-const verifyToken = require('../VerifyToken/VerifyToken')
+const {verifyToken, verifyUser }= require('../VerifyToken/VerifyToken')
 
 
 
@@ -15,7 +15,7 @@ const verifyToken = require('../VerifyToken/VerifyToken')
 
 router.get("/checkAuthentication" , verifyToken, getAllUser )
 
-router.get("/:id" ,  getIdUser)
+router.get("/checkUser/:id" , verifyUser,  getIdUser)
 
 router.put("/:id" , updateUser )
 
