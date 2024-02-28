@@ -80,26 +80,22 @@ const Navbar = () => {
 
                                 <span className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
-                                        <span className="relative">
-                                            <Link to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
-                                            <div className="absolute left-0 top-0 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition duration-150 ease-in-out">
-                                                <img
-                                                    className="absolute left-0 top-0 w-full h-full rounded-md"
-                                                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1130"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </span>
-                                        <span className="relative">
-                                            <Link to="/register" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</Link>
-                                            <div className="absolute left-0 top-0 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition duration-150 ease-in-out">
-                                                <img
-                                                    className="absolute left-0 top-0 w-full h-full rounded-md"
-                                                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1130"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </span>
+                                        <Link to="/login" className="relative text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                                            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                                <svg className="h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fillRule="evenodd" d="M3 10a7 7 0 0114 0c0 3.866-3.134 7-7 7s-7-3.134-7-7a7 7 0 0114 0v2a9 9 0 11-14.155-7.196A7.002 7.002 0 013 10zm7-3a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                                                </svg>
+                                            </span>
+                                            Login
+                                        </Link>
+                                        <Link to="/register" className="relative text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                                            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                                <svg className="h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fillRule="evenodd" d="M3 10a7 7 0 0114 0c0 3.866-3.134 7-7 7s-7-3.134-7-7a7 7 0 0114 0v2a9 9 0 11-14.155-7.196A7.002 7.002 0 013 10zm7-3a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                                                </svg>
+                                            </span>
+                                            Register
+                                        </Link>
                                     </div>
                                 </span>
                             </div>
