@@ -13,14 +13,14 @@ const verifyToken = require('../VerifyToken/VerifyToken')
 
 
 
-router.get("/token" , verifyToken, getAllUser )
+router.get("/checkAuthentication" , verifyToken, getAllUser )
 
-router.get("/" ,  getIdUser)
+router.get("/:id" ,  getIdUser)
 
-router.put("/" , updateUser )
+router.put("/:id" , updateUser )
 
 
-router.delete("/" ,  deleteUser)
+router.delete("/:id" ,  deleteUser)
 
 
 
