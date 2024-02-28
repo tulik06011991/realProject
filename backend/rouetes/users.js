@@ -2,27 +2,17 @@ const express= require('express')
 const router = express.Router()
 
 
-router.post("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.post("/" , )
 
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.get("/" ,)
 
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.get("/" , )
 
 
-router.put("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.put("/" , )
 
 
-router.delete("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.delete("/" , )
 
 
 
