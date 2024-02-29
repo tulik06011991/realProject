@@ -32,14 +32,14 @@ const RoomSchema = new mongoose.Schema({
    
 },{timestamps: true}) 
 
-[
-    {number:101, unavailableDates:[]},
-    {number:102, unavailableDates:[]},
-    {number:103, unavailableDates:[]},
-    {number:104, unavailableDates:[]},
-    {number:105, unavailableDates:[]},
-    {number:106, unavailableDates:[]}
-]
+// [
+//     {number:101, unavailableDates:[]},
+//     {number:102, unavailableDates:[]},
+//     {number:103, unavailableDates:[]},
+//     {number:104, unavailableDates:[]},
+//     {number:105, unavailableDates:[]},
+//     {number:106, unavailableDates:[]}
+// ]
 
  const RoomsModel =  mongoose.model('Rooms', RoomSchema)
  module.exports = RoomsModel
