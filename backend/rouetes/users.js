@@ -13,10 +13,10 @@ const { verifyAdmin, verifyUser, verifyToken, }= require('../VerifyToken/VerifyT
 
 
 
-router.get("/checkAuthentication" , verifyToken, getAllUser )
+// router.get("/checkAuthentication" , verifyToken, getAllUser )
 
-router.get("/checkUser/:id" , verifyUser,  getIdUser)
-router.get("/checkAdmin/:id" , verifyAdmin,  getIdUser)
+// router.get("/checkUser/:id" , verifyUser,  getIdUser)
+// router.get("/checkAdmin/:id" , verifyAdmin,  getIdUser)
 
 
 
