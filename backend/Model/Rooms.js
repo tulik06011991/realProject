@@ -3,30 +3,32 @@ const mongoose  = require('mongoose')
 
 
 const RoomSchema = new mongoose.Schema({
-    username: {
+    title: {
         type: String, 
         required: true,
-        unique: true
+      
 
     },
-    email: {
-        type: String, 
+    price: {
+        type: Number, 
         required: true,
-        unique: true
+        
+
+    },
+    maxPeople: {
+        type: Number, 
+        required: true,
+        
 
     },
    
-    password: {
+    desc: {
         type: String, 
         required: true
 
     },
    
-    isAdmin: {
-        type: Boolean, 
-        default : false
-
-    },
+    roomNumbers: [],
    
 },{timestamps: true}) 
 
