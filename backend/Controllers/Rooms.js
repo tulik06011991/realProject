@@ -1,4 +1,13 @@
 const Rooms = require('../Model/Rooms')
+const Hotel = require('../Model/Hotel')
 
 
-const 
+const  createRooms = async(req, res) =>{
+    const hotelId = req.params.hotelid;
+    const newRooms = new Rooms(req.body)
+    try {
+        const saveRoom = await newRooms.save()
+    } catch (error) {
+        
+    }
+}
