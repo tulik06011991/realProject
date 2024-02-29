@@ -1,4 +1,4 @@
-const UserData= require("../Model/Hotel")
+const UserData= require("../Model/Users")
 
 // const createUser = async(req,res) =>{
 //     const Userdata= new UserData(req.body)
