@@ -1,19 +1,8 @@
+import React from 'react'
 
-
-
-
-
-function App() {
-  
-
+const App = () => {
   return (
-    <>
-    
-   <h1>salo</h1>
-
-    
-    </>
-    
+    <div>App</div>
   )
 }
 
