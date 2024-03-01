@@ -7,7 +7,7 @@ const {
     getAllUser,
     getIdUser
 } = require('../Controllers/User')
-const { verifyAdmin, verifyUser, verifyToken, }= require('../VerifyToken/VerifyToken')
+const { verifyAdmin}= require('../VerifyToken/VerifyToken')
 
 
 
