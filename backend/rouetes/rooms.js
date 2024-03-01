@@ -1,28 +1,30 @@
 const express= require('express')
 const router = express.Router()
 
-
-router.post("/" , (req, res) =>{
-    res.send(`salom get`)
-})
-
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
-})
-
-router.get("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+const {
+    createRooms,
+    updateRooms,
+    getAllRooms,
+    getIdRooms,
+    deleteRooms
+} = require('../Controllers/Rooms');
+const {verifyToken, verifyUser, verifyAdmin }= require('../VerifyToken/VerifyToken');
 
 
-router.put("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+router.post("/" , verifyAdmin, createRooms )
+
+router.put("/:id", verifyAdmin,  updateRooms )
+
+router.get("/" , getAllRooms)
 
 
-router.delete("/" , (req, res) =>{
-    res.send(`salom get`)
-})
+
+
+
+router.get("/:id" ,  getIdRooms)
+
+
+router.delete("/:id" , verifyAdmin,  deleteRooms)
 
 
 
