@@ -26,7 +26,7 @@ const  updateRooms = async(req,res) =>{
 }
 
 
-const getAllHotel = async(req,res) =>{
+const getAllRooms = async(req,res) =>{
     try {
         const allRooms = await Rooms.find()
         res.status(200).json(allRooms)
@@ -64,11 +64,11 @@ const deleteRooms = async(req, res) =>{
 
 
 module.exports = {
-    createHotel,
-    updateHotel,
-    deleteHotel,
-    getAllHotel,
-    getIdHotel
+    createRooms,
+    getIdRooms,
+    getAllRooms,
+    updateRooms,
+    deleteRooms
 
     
 }
