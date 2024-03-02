@@ -28,9 +28,9 @@ mongoose.connect(process.env.MONGO_URL)
     console.log( error, `mongodb atlas not connected`)
 })
 
-// mongoose.connection.on('disconnected', () =>{
-//     console.log(`disconnected`);
-// });
+mongoose.connection.on('disconnected', () =>{
+    console.log(`disconnected`);
+});
 
 
 
