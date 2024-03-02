@@ -15,8 +15,8 @@ router.post("/" , verifyAdmin, createRooms )
 
 router.put("/:id", verifyAdmin,  updateRooms )
 
-router.get("/" , getAllRooms)
 
+router.get("/" , getAllRooms)
 
 
 
@@ -25,6 +25,7 @@ router.get("/:id" ,  getIdRooms)
 
 
 router.delete("/:id" , verifyAdmin,  deleteRooms)
+
 
 
 
