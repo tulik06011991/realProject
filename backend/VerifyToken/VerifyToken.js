@@ -29,7 +29,7 @@ const verifyAdmin = (req, res, next) => {
         if (req.user.isAdmin) {
             next();
         } else {
-            return res.status(403).json({ message: `Siz avtorizatsiayadan o'tmagansiz` });
+            return res.status(403).json({ message: `Siz admin emassiz` });
         }
     });
 };
