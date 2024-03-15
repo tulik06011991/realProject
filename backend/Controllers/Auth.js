@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET);
 
         // Set token as a cookie
-        res.cookie('token', token, {
+        res.cookie('access_token', token, {
             httpOnly: true,
             // secure: true, // Uncomment this line in production (for HTTPS)
             // sameSite: 'None', // Uncomment this line in production (for cross-site requests)

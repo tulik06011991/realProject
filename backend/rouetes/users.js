@@ -20,8 +20,8 @@ const { verifyToken, verifyUser, verifyAdmin}= require('../VerifyToken/VerifyTok
 // router.get("/checkUser/:id" , verifyUser,  (req, res, next) =>{
 //     res.send('ishladimmmmmmm')})
 
-// router.get("/checkAdmin/:id" , verifyAdmin, (req, res, next) =>{
-//     res.send('Admin ishladi')} )
+router.get("/checkAdmin/:id" , verifyAdmin, (req, res, next) =>{
+    res.send('Admin ishladi')} )
 
 
 
