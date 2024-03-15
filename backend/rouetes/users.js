@@ -13,14 +13,15 @@ const { verifyToken, verifyUser, verifyAdmin}= require('../VerifyToken/VerifyTok
 
 
 
-router.get("/checkAuthentication" , verifyToken, (req, res, next) =>{
-    res.send('ishladi')
-})
+// router.get("/checkAuthentication" , verifyToken, (req, res, next) =>{
+//     res.send('ishladi')
+// })
 
-router.get("/checkUser/:id" , verifyUser,  (req, res, next) =>{
-    res.send('ishladi')})
+// router.get("/checkUser/:id" , verifyUser,  (req, res, next) =>{
+//     res.send('ishladimmmmmmm')})
 
-router.get("/checkAdmin/:id" , verifyAdmin,  getIdUser)
+// router.get("/checkAdmin/:id" , verifyAdmin, (req, res, next) =>{
+//     res.send('Admin ishladi')} )
 
 
 
