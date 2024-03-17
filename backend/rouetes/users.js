@@ -7,16 +7,22 @@ const {
     getAllUser,
     getIdUser
 } = require('../Controllers/User')
-const { verifyAdmin}= require('../VerifyToken/VerifyToken')
+const { verifyToken, verifyUser, verifyAdmin} = require('../VerifyToken/VerifyToken')
 
 
 
 
 
-// router.get("/checkAuthentication" , verifyToken, getAllUser )
+router.get("/checkAuthentication" , verifyToken, (req,res) =>{
+    res.send(`verify token ishladi`)
+} )
 
-// router.get("/checkUser/:id" , verifyUser,  getIdUser)
-// router.get("/checkAdmin/:id" , verifyAdmin,  getIdUser)
+router.get("/checkUser/:id" , verifyUser, (req,res) =>{
+    res.send(`verifyUser ishladi`)
+})
+router.get("/checkAdmin/:id" , verifyAdmin,  (req,res) =>{
+    res.send(`verifyAdmin ishladi`)
+})
 
 
 
