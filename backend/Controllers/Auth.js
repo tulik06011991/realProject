@@ -14,8 +14,9 @@ const registerUser = async (req, res) => {
         if (isUser) {
             return res.status(401).json({ message: "Bu foydalanuvchi avval ro'yxatdan o'tgan" });
         }
+        const salt = bcrypt.genSaltSync(10);
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
         const newUser = await AuthModel.create({ ...req.body, password: hashedPassword });
 
@@ -24,7 +25,7 @@ const registerUser = async (req, res) => {
 
         const { password, ...others } = newUser._doc;
         
-        return res.status(201).json({others}); // Foydalanuvchi muvaffaqiyatli qo'shildi
+        return res.status(201).json({ token, others}); // Foydalanuvchi muvaffaqiyatli qo'shildi
 
     } catch (error) {
         console.error('Registration error:', error);
@@ -50,7 +51,7 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ message: "Login yoki parol xato" });
         }
 
-        const payload = { id: user._id, username: user.username };
+        const payload = { id: user._id, isAdmin: user.isAdmin };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
 
         // Set token as a cookie
@@ -60,8 +61,8 @@ const loginUser = async (req, res) => {
             // sameSite: 'None', // Uncomment this line in production (for cross-site requests)
         });
 
-        const { password, ...others } = user._doc;
-        return res.status(200).json({ token, ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
+        const { password, isAdmin,  ...others } = user._doc;
+        return res.status(200).json({  ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
 
     } catch (error) {
         console.error('Login error:', error);

@@ -16,7 +16,7 @@ const verifyToken = (req, res, next) => {
 
 const verifyUser = (req, res, next) => {
     verifyToken(req, res, () => {
-        if (req.user.id === req.params.id || req.user.isAdmin) {
+        if (req.user.id === req.params.id) {
             next();
         } else {
             return res.status(403).json({ message: `Siz avtorizatsiayadan o'tmagansiz` });
@@ -27,9 +27,11 @@ const verifyUser = (req, res, next) => {
 const verifyAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
         if (req.user.isAdmin) {
+            
             next();
         } else {
-            return res.status(403).json({ message: `Siz admin emassiz` });
+             return res.status(403).json({ message: `Siz admin emassiz` });
+            
         }
     });
 };
