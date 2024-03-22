@@ -1,27 +1,25 @@
+const jwt = require('jsonwebtoken');
 
-const jwt = require('jsonwebtoken')
 
 
-const verifyToken = async(req, res, next)  => {
+
+
+
+const verifyToken = (req, res, next) => {
     const token = req.cookies.access_token;
-    if(!token) {
-        return res.status(401).json(`Siz ro'yxatdan o'tmagansiz yo'q`)
+    if (!token) {
+        return res.status(401).json(`Siz ro'yxatdan o'tmagansiz yo'q`);
 
     }
-    jwt.verify(token, process.env.JWT_SECRET, (error, user) =>{
-        if(error) {
-            return res.status(403).json(`xato token yubordingiz`)
-
+    jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
+        if (error) {
+            return res.status(403).json(`xato token yubordingiz`);
         }
-        else{
-            req.user = user,
-            next()
-        }
+        req.user = user;
+        next();
+    });
+};
 
-    } )
-    
-
-}
 
 
 const verifyUser = async (req, res, next) => {
@@ -64,9 +62,11 @@ const verifyAdmin = (req, res, next, ) => {
 };
 
 
-module.exports = {
-verifyToken,
-verifyUser,
-verifyAdmin
-}
 
+
+
+module.exports = {
+    verifyToken,
+    verifyUser,
+    verifyAdmin
+}
