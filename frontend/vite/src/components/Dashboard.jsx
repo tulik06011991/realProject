@@ -168,7 +168,7 @@ const Dashboard = () => {
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"/></td>
                         <td class="py-2 px-4 border-b border-grey-light">{d.email}</td>
-                        <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
+                        <td class="py-2 px-4 border-b border-grey-light">{d.email}</td>
                     </tr>
                     ))
                         }
