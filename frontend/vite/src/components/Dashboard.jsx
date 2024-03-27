@@ -9,9 +9,7 @@ const Dashboard = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false)
   const [notificationOpen, setnotificationOpen] = useState(false)
   const [dropdownOpen, setdropdownOpen] = useState(false)
-  const [] = useState(false)
-  const [] = useState(false)
-  const [] = useState(false)
+  
 
 
 
@@ -53,10 +51,13 @@ const Dashboard = () => {
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     
     <div x-data="{ sidebarOpen: false }" className="flex h-screen bg-gray-200">
-        <div className="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" className="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
+        <div className="{sidebarOpen ? 'block' : 'hidden'} onClick={() => setsidebarOpen(!sidebarOpen)} fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
+
+<div className="{sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'} fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
+    <div className="flex items-center justify-center mt-8">
+        {/* Qo'shimcha kodlar */}
     
-        <div className="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" className="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
-            <div className="flex items-center justify-center mt-8">
+
                 <div className="flex items-center">
                     <svg className="w-12 h-12" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M364.61 390.213C304.625 450.196 207.37 450.196 147.386 390.213C117.394 360.22 102.398 320.911 102.398 281.6C102.398 242.291 117.394 202.981 147.386 172.989C147.386 230.4 153.6 281.6 230.4 307.2C230.4 256 256 102.4 294.4 76.7999C320 128 334.618 142.997 364.608 172.989C394.601 202.981 409.597 242.291 409.597 281.6C409.597 320.911 394.601 360.22 364.61 390.213Z" fill="#4C51BF" stroke="#4C51BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -120,7 +121,7 @@ const Dashboard = () => {
         <div className="flex flex-col flex-1 overflow-hidden">
             <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600">
                 <div className="flex items-center">
-                    <button @click="sidebarOpen = true" className="text-gray-500 focus:outline-none lg:hidden">
+                    <button  onClick={() =>setsidebarOpen(!sidebarOpen)}  className="text-gray-500 focus:outline-none lg:hidden">
                         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"></path>
@@ -138,13 +139,13 @@ const Dashboard = () => {
                         </span>
     
                         <input className="w-32 pl-10 pr-4 rounded-md form-input sm:w-64 focus:border-indigo-600" type="text"
-                            placeholder="Search">
+                            placeholder="Search"/>
                     </div>
                 </div>
     
                 <div className="flex items-center">
                     <div x-data="{ notificationOpen: false }" className="relative">
-                        <button @click="notificationOpen = ! notificationOpen"
+                        <button onClick={() =>setnotificationOpen(!notificationOpen)} 
                             className="flex mx-4 text-gray-600 focus:outline-none">
                             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -154,12 +155,12 @@ const Dashboard = () => {
                             </svg>
                         </button>
     
-                        <div x-show="notificationOpen" @click="notificationOpen = false"
-                            className="fixed inset-0 z-10 w-full h-full" style="display: none;"></div>
+                        <div x-show="notificationOpen" onClick={() =>setnotificationOpen(!notificationOpen)} 
+                            className="fixed inset-0 z-10 w-full h-full" style={{display: "none"}}></div>
     
                         <div x-show="notificationOpen"
                             className="absolute right-0 z-10 mt-2 overflow-hidden bg-white rounded-lg shadow-xl w-80"
-                            style="width: 20rem; display: none;">
+                            style={{width: "20rem", display: "none"}}>
                             <a href="#"
                                 className="flex items-center px-4 py-3 -mx-2 text-gray-600 hover:text-white hover:bg-indigo-600">
                                 <img className="object-cover w-8 h-8 mx-1 rounded-full"
@@ -202,19 +203,19 @@ const Dashboard = () => {
                     </div>
     
                     <div x-data="{ dropdownOpen: false }" className="relative">
-                        <button @click="dropdownOpen = ! dropdownOpen"
+                        <button   onClick={() =>setdropdownOpen(!dropdownOpen)} 
                             className="relative block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none">
                             <img className="object-cover w-full h-full"
                                 src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
-                                alt="Your avatar">
+                                alt="Your avatar"/>
                         </button>
     
-                        <div x-show="dropdownOpen" @click="dropdownOpen = false" className="fixed inset-0 z-10 w-full h-full"
-                            style="display: none;"></div>
+                        <div x-show="dropdownOpen" onClick={() =>setdropdownOpen(!dropdownOpen)}  className="fixed inset-0 z-10 w-full h-full"
+                            style={{display: "none"}}></div>
     
                         <div x-show="dropdownOpen"
                             className="absolute right-0 z-10 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl"
-                            style="display: none;">
+                            style={{display: "none"}}>
                             <a href="#"
                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
                             <a href="#"
