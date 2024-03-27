@@ -14,6 +14,7 @@ const { verifyToken, verifyUser, verifyAdmin} = require('../VerifyToken/VerifyTo
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -32,9 +33,14 @@ router.get("/checkAdmin/:id" , verifyAdmin,  (req,res) =>{
 // router.get("/checkAuthentication" , verifyToken, (req, res, next) =>{
 //     res.send('ishladi')
 // })
+=======
+router.get("/checkAuthentication" , verifyToken, (req, res, next) =>{
+    res.send('ishladi')
+})
+>>>>>>> 2ecca0c9f7a545fb98ff1b9d41074cc5fe91e16b
 
-// router.get("/checkUser/:id" , verifyUser,  (req, res, next) =>{
-//     res.send('ishladimmmmmmm')})
+router.get("/checkUser/:id" , verifyUser,  (req, res, next) =>{
+    res.send('ishladimmmmmmm')})
 
 router.get("/checkAdmin/:id" , verifyAdmin, (req, res, next) =>{
     res.send('Admin ishladi')} )
