@@ -51,9 +51,9 @@ const Dashboard = () => {
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     
     <div x-data="{ sidebarOpen: false }" className="flex h-screen bg-gray-200">
-        <div className="{sidebarOpen ? 'block' : 'hidden'} onClick={() => setsidebarOpen(!sidebarOpen)} fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
+        <div className={sidebarOpen ? 'block' : 'hidden'} onClick={() => setsidebarOpen(!sidebarOpen)} classname = "fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
 
-<div className="{sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'} fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
+<div className={sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'} classname = "fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0">
     <div className="flex items-center justify-center mt-8">
         {/* Qo'shimcha kodlar */}
     
