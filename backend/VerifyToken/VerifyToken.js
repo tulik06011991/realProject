@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken');
 
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.access_token;
+    const token = req.headers.access_token || req.cookies.access_token;
+    
     if (!token) {
         return res.status(401).json(`Siz ro'yxatdan o'tmagansiz yo'q`);
 
