@@ -52,17 +52,28 @@ const loginUser = async (req, res) => {
         }
 
         const payload = { id: user._id, isAdmin: user.isAdmin };
+<<<<<<< HEAD
+        const token = jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: "1h"});
+=======
         const token = jwt.sign(payload, process.env.JWT_SECRET);
+>>>>>>> 2ecca0c9f7a545fb98ff1b9d41074cc5fe91e16b
 
         // Set token as a cookie
         res.cookie('access_token', token, {
             httpOnly: true,
-            // secure: true, // Uncomment this line in production (for HTTPS)
-            // sameSite: 'None', // Uncomment this line in production (for cross-site requests)
+            
+            //  secure: true, // Uncomment this line in production (for HTTPS)
+            //  sameSite: 'None', // Uncomment this line in production (for cross-site requests)
+            //  'Access-Control-Allow-Origin': 'http://localhost:5173',
         });
 
+<<<<<<< HEAD
+        const { password,  ...others } = user._doc;
+        return res.status(200).json({ token,  ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
+=======
         const { password, isAdmin,  ...others } = user._doc;
         return res.status(200).json({  ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
+>>>>>>> 2ecca0c9f7a545fb98ff1b9d41074cc5fe91e16b
 
     } catch (error) {
         console.error('Login error:', error);
@@ -70,4 +81,11 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
+
+const logout = async(req, res) =>{
+    res.clearCookie('access_token');
+  // Muvaffaqiyatli qaytish
+  res.send('Cookie o\'chirildi');
+}
+
+module.exports = { registerUser, loginUser, logout };
