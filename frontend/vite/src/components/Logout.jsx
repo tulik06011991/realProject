@@ -21,7 +21,7 @@ const Logout = () => {
               }
               // Ekranga chiqaramiz
             } catch (error) {
-              console.error('Xatolik:', error);
+              console.error('Xatolik yuz berdi:', error);
             }
           };
           handleLogout()
