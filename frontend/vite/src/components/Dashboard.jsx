@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 
 
 const Dashboard = () => {
@@ -52,7 +53,7 @@ const Dashboard = () => {
 <div class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
     <div class="flex items-center">
         <div class="flex items-center"> 
-            <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2"/>
+        <button class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" onClick={() =>setsidebarOpen(!sidebarOpen)} >   <FaBars /></button>
             <h2 class="font-bold text-xl">Nombre de la Aplicación</h2>
         </div>
         <div class="md:hidden flex items-center"> 
@@ -77,7 +78,7 @@ const Dashboard = () => {
 
 <div class="flex-1 flex flex-wrap">
   
-    <div class="p-2 bg-white w-full md:w-60 flex flex-col md:flex hidden" id="sideNav">
+<div className={`p-2 bg-white w-full md:w-60 flex flex-col md:flex ${sidebarOpen ? 'block' : 'hidden'}`} id="sideNav" >
         <nav>
             <a class="block text-gray-500 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
                 <i class="fas fa-home mr-2"></i>Inicio
