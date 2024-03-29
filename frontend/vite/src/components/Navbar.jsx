@@ -83,7 +83,8 @@ const Navbar = () => {
                                     <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Link>
                                 </div>
                             </div>
-                            <Link to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
+                            <Link to="/login" className=" ml-5 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
+                            <Link to="/register" className=" ml-5 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</Link>
                         </div>
                     </div>
                 </div>
