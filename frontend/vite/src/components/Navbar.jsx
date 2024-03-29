@@ -5,7 +5,7 @@ import '../App.css';
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
     const[ Openbar, setOpenBar] = useState(false)
-    const[OpenProfile, setOpenProfile] = useState(false)
+    const[OpenProfile, setOpenProfile] = useState(true)
 
     useEffect(() => {
         const savedMode = localStorage.getItem('Mode');
@@ -83,6 +83,7 @@ const Navbar = () => {
                                     <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Link>
                                 </div>
                             </div>
+                            <Link to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
                         </div>
                     </div>
                 </div>
@@ -93,8 +94,8 @@ const Navbar = () => {
 
                         <Link to="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</Link>
                         <Link to="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</Link>
-                        <Link to="/register" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</Link>
-                        <Link to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Login</Link>
+                        <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</Link>
+                        <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</Link>
                     </div>
                 </div>
             </nav>
