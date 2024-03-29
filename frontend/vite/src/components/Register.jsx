@@ -63,7 +63,7 @@ const Register = () => {
               </div>
               <div>
                 <label className="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
-                <input className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" autoComplete="current-password"
+                <input className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="password" name="password" id="password" autoComplete="current-password"
                   required
                   onChange={(e) => setPassword(e.target.value)} placeholder="password" />
               </div>
