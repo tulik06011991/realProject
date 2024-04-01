@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
+const Product = require('./AdminProduct')
 
+
+// Mahsulot modeli
 const productSchema = new mongoose.Schema({
   name: {
     type : String,
@@ -9,11 +12,9 @@ const productSchema = new mongoose.Schema({
     type : Number,
     required: true
 },
+  category: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' } // Kategoriyaga murojaat
 });
-
-
-
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Product };
+module.exports = { Category, Product };

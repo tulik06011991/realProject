@@ -1,5 +1,5 @@
-const User = require('../Model/Product')
-const Product = require('../Model/Product')
+const User = require('../Model/AdminProduct')
+const Product = require('../Model/AdminProduct')
 
 
 
