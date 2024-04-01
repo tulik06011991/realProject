@@ -4,7 +4,7 @@ const Product = require('../Model/Product')
 const AdminProduct = async (req, res) => {
     try {
       const { name, price } = req.body;
-      const category = await Product.findById(categoryId);
+      const category = await Product.findById(id);
       if (!category) {
         return res.status(400).send('Kategoriya topilmadi');
       }
