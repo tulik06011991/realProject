@@ -21,7 +21,7 @@ const verifyToken = (req, res, next) => {
     });
 };
 
-<<<<<<< HEAD
+
 
 
 const verifyUser = async (req, res, next) => {
@@ -61,29 +61,9 @@ const verifyAdmin = (req, res, next, ) => {
         console.error('verifyAdmin error:', error);
         return res.status(500).json({ message: "Server xatosi" });
     }
-=======
-const verifyUser = (req, res, next) => {
-    verifyToken(req, res, () => {
-        if (req.user.id === req.params.id) {
-            next();
-        } else {
-            return res.status(403).json({ message: `Siz avtorizatsiayadan o'tmagansiz` });
-        }
-    });
-};
+}
 
-const verifyAdmin = (req, res, next) => {
-    verifyToken(req, res, () => {
-        if (req.user.isAdmin) {
-            
-            next();
-        } else {
-             return res.status(403).json({ message: `Siz admin emassiz` });
-            
-        }
-    });
->>>>>>> 2ecca0c9f7a545fb98ff1b9d41074cc5fe91e16b
-};
+
 
 
 
