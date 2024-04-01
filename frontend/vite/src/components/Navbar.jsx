@@ -4,7 +4,7 @@ import '../App.css';
 
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
-    const[ Openbar, setOpenBar] = useState(false)
+    const[ Openbar, setOpenBar] = useState(true)
     const[OpenProfile, setOpenProfile] = useState(true)
 
     useEffect(() => {

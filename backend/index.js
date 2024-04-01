@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const authRoute = require('./rouetes/auth')
 const users = require('./rouetes/users')
-const rooms = require('./rouetes/rooms')
+const  purchase= require('./rouetes/Purchase')
 const hotel = require('./rouetes/hotel')
 const cookieParser = require('cookie-parser')
 
@@ -21,7 +21,7 @@ app.use(express.json())
 app.use('/auth' , authRoute)
 app.use('/users', users)
 app.use('/hotel', hotel)
-app.use('/rooms' , rooms)
+app.use('/purchase' , purchase)
 
 
 
