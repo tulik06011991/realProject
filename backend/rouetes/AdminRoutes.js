@@ -1,12 +1,11 @@
-const express= require('express')
-const router = express.Router()
-const adminProduct = require('../Controllers/AdminPanel')
+const express = require('express');
+const router = express.Router();
+const {  AdminProduct } = require('../Controllers/AdminPanel'); // Funksiyalar olib kelish
+const { verifyAdmin } = require('../VerifyToken/VerifyToken');
 
 
-const { verifyAdmin }= require('../VerifyToken/VerifyToken');
+// router.post("/adminProducts", verifyAdmin, adminProduct); // Post ro'yxati
 
+router.post('/admin', verifyAdmin,  AdminProduct) // Get ro'yxati
 
-router.post("/adminProducts" ,  verifyAdmin,  adminProduct )
-
-
-module.exports = router
+module.exports = router;
