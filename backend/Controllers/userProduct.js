@@ -37,11 +37,20 @@ const ProductsPerson = async (req, res) => {
     }
 };
 
-;
+const ProductGet = async (req, res) => {
+  try {
+    const users = await Userproducts.find().populate('purchasedProducts.product');
+    res.json(users);
+  } catch (error) {
+    console.error('Ma\'lumotlar olishda xatolik:', error);
+    res.status(500).send('Server xatosi');
+  }
+};
 
 
 
   module.exports = {
-    ProductsPerson
+    ProductsPerson,
+    ProductGet
     
   }
