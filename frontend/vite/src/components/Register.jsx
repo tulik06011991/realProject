@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = () => {
-    const [username, setusername] = useState('')
+  const [username, setusername] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,16 +21,17 @@ const Register = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          // withCredentials: true
+          withCredentials: true
         },
-        );
-        if(response.data.status ===201){
-          alert.apply(`muvaffaqiyatli`)
-        }else{
-          alert(`bomadi`)
+      );
+      if (response) {
 
-        }
-        console.log(response)
+        window.location.href = '/login'
+      } else {
+        alert(`bomadi`)
+
+      }
+     
       // Handle response as needed
     } catch (error) {
       // Handle error
@@ -39,130 +40,46 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <>
 
 
 
-      <form   onSubmit={handleSubmit} >
-        <br /><br />
-      <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  required
-                  onChange={(e) => setusername(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                /> <br /><br />
-                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                /> <br /> <br />
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-                <br /><br />
-                <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
+      
 
-
-
-
-
-
-
-      </form>
-      {/* <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-
-          <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Username
-              </label>
-              <div className="mt-2">
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  autoComplete="username"
-                  required
-                  onChange={(e) => setusername(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+        <div className="h-screen bg-indigo-100 flex justify-center items-center">
+          <div className="lg:w-2/5 md:w-1/2 w-2/3">
+            <form className="bg-white p-10 rounded-lg shadow-lg min-w-full" onSubmit={handleSubmit}>
+              <h1 className="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Ro'yxatdan o'tish</h1>
+              <div>
+                <label className="text-gray-800 font-semibold block my-3 text-md" for="username">Username</label>
+                <input className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="username" id="username"  autoComplete="username"
+                  required  onChange={(e) => setusername(e.target.value)} placeholder="username" />
               </div>
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+              <div>
+                <label className="text-gray-800 font-semibold block my-3 text-md" for="email">Email</label>
+                <input className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="email" id="email" autoComplete="email"
                   required
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                  onChange={(e) => setEmail(e.target.value)} placeholder="@email" />
               </div>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                  Password
-                </label>
-                
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
+              <div>
+                <label className="text-gray-800 font-semibold block my-3 text-md" for="password">Password</label>
+                <input className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="password" name="password" id="password" autoComplete="current-password"
                   required
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+                  onChange={(e) => setPassword(e.target.value)} placeholder="password" />
               </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
-            </div>
-          </form>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a Link member?
-            <Link to="/" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start Link 14 day free trial
-            </Link>
-          </p>
+              
+              <br />
+              <button type="submit" className=' transition duration-200 bg-blue-500  hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-dark w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block' >Register</button>
+              <br />
+            
+            </form>
+            
+          </div>
         </div>
-      </div> */}
-    </div>
+        
+      
+      
+    </>
   );
 };
 

@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-.dark-mode{
-    background-color: rgb(3, 15, 15);
-}
 
-
-
-.light-mode{
-    background-color: azure;
-}
-=======
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
->>>>>>> 2ecca0c9f7a545fb98ff1b9d41074cc5fe91e16b
+
