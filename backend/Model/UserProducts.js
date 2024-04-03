@@ -1,15 +1,24 @@
-const mongoose = require('mongoose');
-const AdminProduct = require('../Model/AdminProduct');
+// userProducts.js
 
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  purchasedProducts: [{
-    product: { type: mongoose.Schema.Types.ObjectId, ref: 'AdminProduct' }, // Mahsulotlar uchun murojaat
-    purchaseDate: { type: Date, default: Date.now } // Sotib olgan vaqt
-  }]
+const mongoose = require('mongoose');
+
+// UserProducts schema
+const userProductsSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
+    },
+    purchaseDate: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-const User = mongoose.model('User', userSchema);
+// UserProducts model
+const UserProducts = mongoose.model('UserProducts', userProductsSchema);
 
-module.exports = { User };
+module.exports = UserProducts;

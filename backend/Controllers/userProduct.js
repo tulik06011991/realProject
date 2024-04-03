@@ -1,9 +1,9 @@
 const User = require('../Model/Users');
 const Product = require('../Model/AdminProduct');
-const Userproducts = require('../Model/UserProducts');
+const UserProducts = require('../Model/UserProducts');
 
 const ProductsPerson = async (req, res) => {
-    const { userId, productId } = req.params;
+    const { userId, productId } = req.body;
 
     try {
         const user = await User.findById(userId);
@@ -14,23 +14,15 @@ const ProductsPerson = async (req, res) => {
         }
 
         const purchaseDate = new Date();
-        const email = user.email;
-        const name = user.name;
 
-        user.purchasedProducts.push({ product: product._id, purchaseDate });
-        await user.save();
+        const newUserProducts = new UserProducts({
+            user: user._id,
+            product: product._id,
+            purchaseDate: purchaseDate
+        });
+        await newUserProducts.save();
 
-        const purchasedCount = user.purchasedProducts.length;
-
-        const data = {
-            email,
-            name,
-            mahsulot: product._id,
-            purchasedCount
-        };
-
-        const newData = await Userproducts.create(data);
-        res.send(`Mahsulot sotib olindi. Sizning umumiy sotib olishlar soningiz: ${newData}`);
+        res.send('Mahsulot sotib olindi.');
     } catch (error) {
         console.error('Error purchasing product:', error);
         res.status(500).send('Server xatosi');
@@ -38,19 +30,16 @@ const ProductsPerson = async (req, res) => {
 };
 
 const ProductGet = async (req, res) => {
-  try {
-    const users = await Userproducts.find().populate('purchasedProducts.product');
-    res.json(users);
-  } catch (error) {
-    console.error('Ma\'lumotlar olishda xatolik:', error);
-    res.status(500).send('Server xatosi');
-  }
+    try {
+        const users = await UserProducts.find().populate('product');
+        res.json(users);
+    } catch (error) {
+        console.error('Ma\'lumotlar olishda xatolik:', error);
+        res.status(500).send('Server xatosi');
+    }
 };
 
-
-
-  module.exports = {
+module.exports = {
     ProductsPerson,
     ProductGet
-    
-  }
+};
