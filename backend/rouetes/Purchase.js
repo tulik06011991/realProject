@@ -3,6 +3,6 @@ const router = express.Router()
 
 const purchaseController = require('../Controllers/userController');
 
-router.post('/purchase', purchaseController. UserPurchase);
+router.post('/purchase', purchaseController.UserPurchase);
 
 module.exports = router
