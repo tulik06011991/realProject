@@ -5,12 +5,16 @@ const mongoose = require('mongoose');
 // UserProducts schema
 const userProductsSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        required: true
     },
     product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
+        type: String,
+        required: true
+    },
+    price:{
+        type: Number,
+        required: true
     },
     purchaseDate: {
         type: Date,
