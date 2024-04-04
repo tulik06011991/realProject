@@ -28,8 +28,31 @@ const UserPurchase = async(req, res) =>{
         res.status(500).json({ msg: error });
         
     }
+};
+const UserGetProduct = async(req, res) =>{
+    try {
+        const {UserId, ProductId} = req.body;
+
+        const user = await UserData.findOne(UserId);
+        const product = await Product.findOne(ProductId)
+
+        if(!user || !product ){
+            res.status(400).send(`malumot topilmadi`)
+        };
+        const daqiqa = Date.now()
+
+
+        const Data = await Product.find();
+        res.status(201).json({Data, daqiqa})
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: error });
+        
+    }
 }
 
 module.exports = {
-    UserPurchase
+    UserPurchase,
+    UserGetProduct
 }
