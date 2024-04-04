@@ -1,11 +1,19 @@
 const express = require('express');
-const router = express.Router();
-const {  AdminProduct } = require('../Controllers/AdminPanel'); // Funksiyalar olib kelish
+const router = express.Router();// Funksiyalar olib kelish
 const { verifyAdmin } = require('../VerifyToken/VerifyToken');
+const { updateProduct,
+    getAllProduct,
+    getIdProduct,
+    deleteUser,
+    createProduct} = require('../Controllers/adminController');
 
 
-// router.post("/adminProducts", verifyAdmin, adminProduct); // Post ro'yxati
 
-router.post('/admin', verifyAdmin,  AdminProduct) // Get ro'yxati
+
+    router.post('/productPost', createProduct )
+    router.get('/productGet', getAllProduct )
+    router.get('/productGetId', getIdProduct )
+    router.put('/productUpdate', updateProduct )
+    router.delete('/productDelete', deleteUser )
 
 module.exports = router;
