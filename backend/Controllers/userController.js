@@ -43,6 +43,20 @@ const UserPurchase = async(req, res) =>{
 };
 
 const UserGetProduct = async(req, res) =>{
+    const userId = req.params
+    try {
+        const user = await UserData.findOne(userId);
+        if(!user){
+            res.status(400).send(`bunday foydalanuvchi ro'yxatdan topilmadi`)
+        }
+        const Mahsulotlar = await Product.find();
+        res.status(200).json(Mahsulotlar)
+       
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: error });
+        
+    }
     
 }
 
