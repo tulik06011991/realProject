@@ -11,7 +11,7 @@ const { updateProduct,
 
 
     router.post('/productPost', verifyAdmin, createProduct )
-    router.get('/productGet',  verifyUser, getAllProduct )
+    router.get('/productGet',  verifyAdmin, getAllProduct )
     router.get('/productGetId', verifyUser, getIdProduct )
     router.put('/productUpdate',verifyAdmin, updateProduct )
     router.delete('/productDelete', verifyAdmin, deleteUser )

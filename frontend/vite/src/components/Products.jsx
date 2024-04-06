@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
@@ -11,6 +11,36 @@ const Products = () => {
   const [sidebarOpen, setsidebarOpen] = useState(false)
   const [notificationOpen, setnotificationOpen] = useState(false)
   const [dropdownOpen, setdropdownOpen] = useState(false)
+
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+        try {
+
+            const response = await axios.get('http://localhost:8800/admin/productGet',
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
+                },
+
+            );
+            setData(response.data);
+            console.log(response.data)
+
+        } catch (error) {
+            console.log(error)
+
+        }
+    };
+
+    // useEffect içinde async fonksiyon direkt olarak kullanılamaz, bu yüzden IIFE kullanıyoruz
+    (async () => {
+        await fetchData();
+    })();
+}, []);
 
 
 
