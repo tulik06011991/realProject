@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();// Funksiyalar olib kelish
-const { verifyAdmin } = require('../VerifyToken/VerifyToken');
+const { verifyAdmin, verifyUser } = require('../VerifyToken/VerifyToken');
 const { updateProduct,
     getAllProduct,
     getIdProduct,
@@ -11,8 +11,8 @@ const { updateProduct,
 
 
     router.post('/productPost', verifyAdmin, createProduct )
-    router.get('/productGet',  verifyAdmin, getAllProduct )
-    router.get('/productGetId', verifyAdmin, getIdProduct )
+    router.get('/productGet',  verifyUser, getAllProduct )
+    router.get('/productGetId', verifyUser, getIdProduct )
     router.put('/productUpdate',verifyAdmin, updateProduct )
     router.delete('/productDelete', verifyAdmin, deleteUser )
 

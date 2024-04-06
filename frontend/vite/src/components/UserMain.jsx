@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react';
 const UserMain = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    // const accessToken = localStorage.getItem('access_token');
-    // setToken(accessToken);
-    // console.log(token)
+   
     const fetchData = async () => {
       try {
         // localStorage'dan tokeni al

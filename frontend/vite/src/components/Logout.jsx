@@ -30,7 +30,7 @@ const Logout = () => {
 
 
   return (
-    <div>Logout</div>
+    <div></div>
   )
 }
 
