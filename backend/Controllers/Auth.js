@@ -54,7 +54,11 @@ const loginUser = async (req, res) => {
         const payload = { id: user._id, isAdmin: user.isAdmin };
 
         const token = jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: "1h"});
+
+
+ 
        
+
 
 
         // Set token as a cookie
@@ -67,8 +71,13 @@ const loginUser = async (req, res) => {
         });
 
 
-        const { password, ...others } = user._doc;
+
+        const { password,  ...others } = user._doc;
         return res.status(200).json({ token,  ...others }); // Foydalanuvchi muvaffaqiyatli kirish qildi
+
+       
+
+  
 
 
 

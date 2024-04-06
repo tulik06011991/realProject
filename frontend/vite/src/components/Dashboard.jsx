@@ -5,11 +5,14 @@ import { FaBars } from 'react-icons/fa';
 
 
 const Dashboard = () => {
+
+
     const [data, setData] = useState([]);
     const navigate = useNavigate()
     const [sidebarOpen, setsidebarOpen] = useState(false)
     const [notificationOpen, setnotificationOpen] = useState(false)
     const [dropdownOpen, setdropdownOpen] = useState(false)
+
 
 
 
@@ -46,9 +49,16 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <>
-            <div className="flex flex-col h-screen bg-gray-100">
+      
+           
 
+
+
+    <>
+    
+   
+     <div>
+  
 
                 <div className="bg-white text-white shadow w-full p-2 flex items-center justify-between">
                     <div className="flex items-center">
@@ -241,6 +251,7 @@ const Dashboard = () => {
 
 
     );
+
 };
 
 export default Dashboard;

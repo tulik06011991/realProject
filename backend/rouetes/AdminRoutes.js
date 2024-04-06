@@ -10,10 +10,11 @@ const { updateProduct,
 
 
 
-    router.post('/productPost', createProduct )
-    router.get('/productGet', getAllProduct )
-    router.get('/productGetId', getIdProduct )
-    router.put('/productUpdate', updateProduct )
-    router.delete('/productDelete', deleteUser )
+    router.post('/productPost', verifyAdmin, createProduct )
+    router.get('/productGet',  verifyAdmin, getAllProduct )
+    router.get('/productGetId', verifyAdmin, getIdProduct )
+    router.put('/productUpdate',verifyAdmin, updateProduct )
+    router.delete('/productDelete', verifyAdmin, deleteUser )
+
 
 module.exports = router;

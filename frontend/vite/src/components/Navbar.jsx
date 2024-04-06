@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from 'react';
+
+
+import React, { useEffect, useState } from 'react'
+
+
+
 import { Link } from 'react-router-dom';
 import '../App.css';
 
@@ -52,7 +57,7 @@ const Navbar = () => {
                                     <Link to="#" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</Link>
                                     <Link to="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</Link>
                                     <Link to="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</Link>
-                                    <Link to="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</Link>
+                                    <Link to="/logout" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</Link>
                                 </div>
                             </div>
                         </div>
@@ -96,13 +101,22 @@ const Navbar = () => {
                         <Link to="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</Link>
                         <Link to="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</Link>
                         <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</Link>
-                        <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</Link>
+                        <Link to="/logout" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Logout</Link>
                     </div>
                 </div>
             </nav>
 
-        </>
-    );
+
+
+        
+    </>
+    )
+
+
+
+       
+    
 };
+
 
 export default Navbar;

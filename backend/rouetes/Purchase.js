@@ -1,8 +1,11 @@
 const express= require('express')
-const router = express.Router()
+const router = express.Router();
+const { verifyUser } = require('../VerifyToken/VerifyToken');
 
-const purchaseController = require('../Controllers/userController');
+const {UserPurchase, UserGetProduct}= require('../Controllers/userController');
 
-router.post('/purchase', purchaseController.UserPurchase);
+router.post('/purchase', verifyUser, UserPurchase);
+router.get('/getPurchase', verifyUser, UserGetProduct );
+
 
 module.exports = router
