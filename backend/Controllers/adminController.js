@@ -1,5 +1,5 @@
 const express = require('express')
-const Product = require("../Model/Mahsulotlar")
+const Product = require("../Model/AdminProduct")
 
 
 const createProduct = async (req, res) => {
