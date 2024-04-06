@@ -61,5 +61,6 @@ const UserGetProduct = async(req, res) =>{
 }
 
 module.exports = {
-    UserPurchase
+    UserPurchase,
+    UserGetProduct
 };
