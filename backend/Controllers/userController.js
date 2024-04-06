@@ -1,58 +1,51 @@
-const Product = require("../Model/Mahsulotlar").Product;
-const UserData= require("../Model/Users");
-const UserProducts = require("../Model/UserProducts")
-
+const Product = require("../Model/AdminProduct").Product;
+const UserData = require("../Model/Users");
+const UserProducts = require("../Model/UserProducts");
 
 const UserPurchase = async(req, res) =>{
     try {
-        const {UserId, ProductId} = req.body;
+
+        const { UserId, ProductIds } = req.body;
 
         const user = await UserData.findOne(UserId);
-        const product = await Product.findOne(ProductId)
+        if (!user) {
+            return res.status(400).send(`Foydalanuvchi topilmadi`);
+        }
 
-        if(!user || !product ){
-            res.status(400).send(`malumot topilmadi`)
-        };
-        const daqiqa = Date.now()
-
+        const daqiqa = Date.now();
         const email = user.email;
-        const name = user.username;
-        const productName = product.name;
-        const productPrice = product.price
 
-        const Data = await UserProducts.create({user: email, product: productName, price: productPrice, purchaseDate: daqiqa});
-        res.status(201).json(Data)
+        const promises = ProductIds.map(async (productId) => {
+            const product = await Product.findOne(productId);
+            if (!product) {
+                return res.status(400).send(`Mahsulot topilmadi`);
+            }
+            const { name: productName, price: productPrice } = product;
 
+            const data = await UserProducts.create({
+                user: email,
+                product: productName,
+                price: productPrice,
+                purchaseDate: daqiqa
+            });
+            return data;
+        });
+
+        const purchasedProducts = await Promise.all(promises);
+
+
+        res.status(201).json(purchasedProducts);
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: error });
         
     }
 };
+
 const UserGetProduct = async(req, res) =>{
-    try {
-        const {UserId, ProductId} = req.body;
-
-        const user = await UserData.findOne(UserId);
-        const product = await Product.findOne(ProductId)
-
-        if(!user || !product ){
-            res.status(400).send(`malumot topilmadi`)
-        };
-        const daqiqa = Date.now()
-
-
-        const Data = await Product.find();
-        res.status(201).json({Data, daqiqa})
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ msg: error });
-        
-    }
+    
 }
 
 module.exports = {
-    UserPurchase,
-    UserGetProduct
-}
+    UserPurchase
+};
