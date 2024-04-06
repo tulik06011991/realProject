@@ -39,6 +39,11 @@ const UserPurchase = async (req, res) => {
     }
 };
 
+
+const UserGetProduct = async(req, res) =>{
+    
+}
+
 module.exports = {
     UserPurchase
 };
